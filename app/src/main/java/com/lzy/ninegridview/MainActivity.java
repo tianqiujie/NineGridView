@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     /** Glide 加载 */
     private class GlideImageLoader implements NineGridView.ImageLoader {
         @Override
-        public void onDisplayImage(Context context, ImageView imageView, String url) {
+        public void onDisplayImage(Context context, ImageView imageView, Object url) {
             Glide.with(context).load(url)//
                     .placeholder(R.drawable.ic_default_color)//
                     .error(R.drawable.ic_default_color)//
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         @Override
-        public Bitmap getCacheImage(String url) {
+        public Bitmap getCacheImage(Object url) {
             return null;
         }
     }
@@ -92,12 +92,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     /** UniversalImageLoader加载 */
     private class UniversalImageLoader implements NineGridView.ImageLoader {
         @Override
-        public void onDisplayImage(Context context, ImageView imageView, String url) {
-            ImageLoader.getInstance().displayImage(url, imageView, GApp.imageLoaderOptions);
+        public void onDisplayImage(Context context, ImageView imageView, Object url) {
+            ImageLoader.getInstance().displayImage(url.toString(), imageView, GApp.imageLoaderOptions);
         }
 
         @Override
-        public Bitmap getCacheImage(String url) {
+        public Bitmap getCacheImage(Object url) {
             return null;
         }
     }
@@ -106,12 +106,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private class XUtilsImageLoader implements NineGridView.ImageLoader {
 
         @Override
-        public void onDisplayImage(Context context, ImageView imageView, String url) {
-            x.image().bind(imageView, url, GApp.xUtilsOptions);
+        public void onDisplayImage(Context context, ImageView imageView, Object url) {
+            x.image().bind(imageView, url.toString(), GApp.xUtilsOptions);
         }
 
         @Override
-        public Bitmap getCacheImage(String url) {
+        public Bitmap getCacheImage(Object url) {
             return null;
         }
     }
@@ -120,15 +120,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private class PicassoImageLoader implements NineGridView.ImageLoader {
 
         @Override
-        public void onDisplayImage(Context context, ImageView imageView, String url) {
-            Picasso.with(context).load(url)//
+        public void onDisplayImage(Context context, ImageView imageView, Object url) {
+            Picasso.with(context).load(url.toString())//
                     .placeholder(R.drawable.ic_default_color)//
                     .error(R.drawable.ic_default_color)//
                     .into(imageView);
         }
 
         @Override
-        public Bitmap getCacheImage(String url) {
+        public Bitmap getCacheImage(Object url) {
             return null;
         }
     }

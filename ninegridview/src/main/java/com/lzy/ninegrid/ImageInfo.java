@@ -12,26 +12,26 @@ import java.io.Serializable;
  * ================================================
  */
 public class ImageInfo implements Serializable {
-    public String thumbnailUrl;
-    public String bigImageUrl;
+    public Object thumbnailUrl;
+    public Object bigImageUrl;
     public int imageViewHeight;
     public int imageViewWidth;
     public int imageViewX;
     public int imageViewY;
 
-    public String getThumbnailUrl() {
+    public Object getThumbnailUrl() {
         return thumbnailUrl;
     }
 
-    public void setThumbnailUrl(String thumbnailUrl) {
+    public void setThumbnailUrl(Object thumbnailUrl) {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public String getBigImageUrl() {
+    public Object getBigImageUrl() {
         return bigImageUrl;
     }
 
-    public void setBigImageUrl(String bigImageUrl) {
+    public void setBigImageUrl(Object bigImageUrl) {
         this.bigImageUrl = bigImageUrl;
     }
 

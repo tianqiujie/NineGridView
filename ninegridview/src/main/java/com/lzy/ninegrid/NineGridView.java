@@ -229,12 +229,12 @@ public class NineGridView extends ViewGroup {
          * @param imageView 需要展示图片的ImageView
          * @param url       图片地址
          */
-        void onDisplayImage(Context context, ImageView imageView, String url);
+        void onDisplayImage(Context context, ImageView imageView, Object url);
 
         /**
          * @param url 图片的地址
          * @return 当前框架的本地缓存图片
          */
-        Bitmap getCacheImage(String url);
+        Bitmap getCacheImage(Object url);
     }
 }

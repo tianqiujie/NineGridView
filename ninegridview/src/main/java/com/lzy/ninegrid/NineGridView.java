@@ -27,7 +27,7 @@ public class NineGridView extends ViewGroup {
     private int gridSpacing = 3;                    // 宫格间距，单位dp
     private int mode = MODE_FILL;                   // 默认使用fill模式
 
-    private int columnCount;    // 列数
+    private int columnCount = 3;    // 列数
     private int rowCount;       // 行数
     private int gridWidth;      // 宫格宽度
     private int gridHeight;     // 宫格高度
@@ -56,6 +56,7 @@ public class NineGridView extends ViewGroup {
         singleImageSize = a.getDimensionPixelSize(R.styleable.NineGridView_ngv_singleImageSize, singleImageSize);
         singleImageRatio = a.getFloat(R.styleable.NineGridView_ngv_singleImageRatio, singleImageRatio);
         maxImageSize = a.getInt(R.styleable.NineGridView_ngv_maxSize, maxImageSize);
+        columnCount = a.getInt(R.styleable.NineGridView_ngv_maxColumn, 3);
         mode = a.getInt(R.styleable.NineGridView_ngv_mode, mode);
         a.recycle();
 
@@ -81,7 +82,7 @@ public class NineGridView extends ViewGroup {
             } else {
 //                gridWidth = gridHeight = (totalWidth - gridSpacing * (columnCount - 1)) / columnCount;
                 //这里无论是几张图片，宽高都按总宽度的 1/3
-                gridWidth = gridHeight = (totalWidth - gridSpacing * 2) / 3;
+                gridWidth = gridHeight = (totalWidth - gridSpacing * (columnCount - 1)) / columnCount;
             }
             width = gridWidth * columnCount + gridSpacing * (columnCount - 1) + getPaddingLeft() + getPaddingRight();
             height = gridHeight * rowCount + gridSpacing * (rowCount - 1) + getPaddingTop() + getPaddingBottom();
@@ -129,8 +130,8 @@ public class NineGridView extends ViewGroup {
         }
 
         //默认是3列显示，行数根据图片的数量决定
-        rowCount = imageCount / 3 + (imageCount % 3 == 0 ? 0 : 1);
-        columnCount = 3;
+        rowCount = imageCount / columnCount + (imageCount % columnCount == 0 ? 0 : 1);
+        //columnCount = 3;
         //grid模式下，显示4张使用2X2模式
         if (mode == MODE_GRID) {
             if (imageCount == 4) {

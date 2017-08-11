@@ -173,7 +173,7 @@ public class NineGridView extends ViewGroup {
     }
 
     /** 获得 ImageView 保证了 ImageView 的重用 */
-    private ImageView getImageView(final int position) {
+    public ImageView getImageView(final int position) {
         ImageView imageView;
         if (position < imageViews.size()) {
             imageView = imageViews.get(position);
